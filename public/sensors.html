@@ -1,0 +1,75 @@
+<script>
+	socket.on('motion', function(motion) {
+		var axisX = ((motion.x+180) / 360) * 100;
+		var axisY = ((motion.y+90) / 180) * 100;
+		var axisZ = (motion.z / 360) * 100;
+		$(".balance-dot").css({
+				'left': axisX+'%',
+				'top': axisY+'%'
+		});
+		
+		$('.value-bars li:nth-child(1) progress').attr('value', axisX);
+		$('.value-bars li:nth-child(2) progress').attr('value', axisY);
+		$('.value-bars li:nth-child(3) progress').attr('value', axisZ);
+		
+		if (motion.btnA === true)
+			$('.big-button').first().addClass('highlight');
+		else
+			$('.big-button').first().removeClass('highlight');
+		if (motion.btnB === true)
+			$('.big-button').last().addClass('highlight');
+		else
+			$('.big-button').last().removeClass('highlight');
+	});
+		
+	$(document).ready(function(){
+		$('#btn-minus').click(function(){
+			var score = parseInt($('#score').text());
+			$('#score').text( score-1 );	
+		});
+		
+		$('#btn-plus').click(function(){
+			var score = parseInt($('#score').text());
+			$('#score').text( score+1 );	
+		});
+		
+		$('#vibrations').bind("mousedown", function(){
+			$(this).text('ON');
+			$(this).removeClass('btn-white');
+		})
+
+		$('#vibrations').bind("mouseup mouseleave", function(){
+			$(this).text('OFF');
+			$(this).addClass('btn-white');
+		})
+	});
+</script>
+
+<div class="col-1-2">
+	<h3>Tilt</h3>
+	<div class="balance-circle">
+		<div class="balance-dot"></div>
+	</div>
+	<ul class="value-bars">
+		<li>X: <progress min="0" max="100" value="0"></progress></li>
+		<li>Y: <progress min="0" max="100" value="0"></progress></li>
+		<li>Z: <progress min="0" max="100" value="0"></progress></li>
+	</ul>
+</div>
+
+<div class="col-1-2">
+	<h3>Buttons</h3>
+	<div class="big-button">A</div>
+	<div class="big-button">B</div>
+	<br>
+	
+	<h3>Score</h3>
+	<button id="btn-minus" class="btn btn-white btn-small" style="display: inline-block">-</button>
+	<div id="score" style="display: inline-block">0</div>
+	<button id="btn-plus" class="btn btn-white btn-small" style="display: inline-block">+</button>
+	<br>
+	
+	<h3>Vibration</h3>
+	<button class="btn btn-white btn-small" id="vibrations">OFF</button>
+	
+</div>

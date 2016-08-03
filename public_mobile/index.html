@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Node gamepad</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Node gamepad test">
+		<meta name="keywords" content="node game gamepad experiment">
+		<meta name="theme-color" content="#6d8496">
+		<!--link rel="icon" type="image/png" href="favicon.png"-->
+		<link href="style.css" rel="stylesheet" type="text/css">
+		
+		<script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+	</head>
+	
+	<body>
+		<header>
+			<div id="logo">
+				Le<b>Maze</b>
+			</div>
+		</header>
+		
+		<form>
+			<h1>Enter PIN</h1>
+			<div id="content" class="middle">
+				lemaze.io/<strong>XXXXX</strong> <br>
+				<input type="text" name="pin" maxlength="10">
+			</div>
+			
+			<input type="submit" class="btn btn-bottom" value="Continue →">
+		</form>
+		
+		<script>
+			$('form').submit(function(e) {
+				e.preventDefault();
+				window.location.href = 'http://192.168.0.100:8080/' + $('input[name="pin"]').val();
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "webgamepad",
+  "version": "0.0.1",
+  "description": "Test app for connecting desktop with smartphone which acts as wireless gamepad.",
+  "main": "app.js",
+  "dependencies": {
+    "debug": "^2.2.0",
+    "ejs": "^2.5.1",
+    "express": "^4.14.0",
+    "express-device": "^0.4.2",
+    "morgan": "^1.7.0",
+    "qr-image": "^3.1.0",
+    "shortid": "^2.2.6",
+    "socket.io": "^1.4.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
