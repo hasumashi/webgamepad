@@ -1,3 +1,8 @@
+#!/usr/bin/env node
+var config = require('./config');
+//var port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
+//var ipaddr = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
+
 var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
@@ -53,8 +58,12 @@ app.get('/qr/random', function(req, res) {
 	sendQrImage(res, Math.random().toString(36).slice(2,7));
 });
 
-app.get('/qr/:pin', function(req, res) {
-	sendQrImage(res, req.params.pin);
+/*app.get('/qr/:text', function(req, res) {
+	sendQrImage(res, req.params.text);
+});*/
+
+app.get('/qr/:url/:pin', function(req, res) {
+	sendQrImage(res, req.params.url + '/' + req.params.pin);
 });
 
 app.get('/:pin', function(req, res) {
@@ -70,6 +79,10 @@ app.get('/:pin', function(req, res) {
 		res.redirect('/');
 		///res.end();
 	}
+});
+
+app.get('/api/config', function(req, res) {
+  res.send('var config = ' + JSON.stringify(config));
 });
 
 /* socket.io */
@@ -117,10 +130,9 @@ io.on('connection', function(socket){
 });
 
 
-server.listen(8080, function() {
-	console.log('Listening on port 8080...');
+server.listen(port, ipaddr, function() {
+	console.log('Listening on %s port %s...', ipaddr, port);
 });
-
 
 
 /* error handling */
