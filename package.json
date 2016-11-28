@@ -18,6 +18,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --use_strict server",
     "start-dev": "IP_ADDR=0.0.0.0 DEBUG=http nodemon --use_strict server"
   },
   "author": "",
