@@ -1,4 +1,6 @@
 (function ( $ ) {
+	
+	var settings = {};
 
 	//function to bind to onpopstate event
 	function loadFromHistory(e){
@@ -76,7 +78,8 @@
 	$.fn.onepage.openLink = function(url) {
 		$.get({
 			url: url,
-			data: settings.mode,
+			data: settings.query,
+			dataType: settings.mode,
 			success: function(data) {
 				if (settings.target === document)
 					replaceDocument(data);
@@ -105,7 +108,7 @@
 		transition: 'none',				// transition to use when changing pages ('none','fade')
 		transitionDuration: 250,		// transition duration in ms
 		linkFormatter: undefined,		// function with one param which formats link in addr bar
-		query: ''						// data to send to server with every request
+		query: null						// data to send to server with every request
 	};
 	 
 }( jQuery ));

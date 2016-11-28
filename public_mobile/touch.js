@@ -1,3 +1,11 @@
+var socket = io();
+var pin = window.location.pathname.slice(1);
+socket.emit('connect-with', pin);
+
+socket.on('connection-lost', function() {
+	alert('Connection lost!');
+});
+
 data = {
 	x: 0,
 	y: 0,
@@ -49,8 +57,3 @@ window.addEventListener('deviceorientation', function (e) {
 	
 	//$('#score').text(data.score);
 });
-
-socket.on('connection-lost', function() {
-	alert('Connection lost!');
-});
-

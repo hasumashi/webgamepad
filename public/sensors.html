@@ -25,7 +25,7 @@
 	$(document).ready(function(){
 		$('#btn-minus').click(function(){
 			var score = parseInt($('#score').text());
-			$('#score').text( score-1 );	
+			$('#score').text( score-1 );
 		});
 		
 		$('#btn-plus').click(function(){
@@ -71,5 +71,22 @@
 	
 	<h3>Vibration</h3>
 	<button class="btn btn-white btn-small" id="vibrations">OFF</button>
-	
 </div>
+
+<!-- disconection alert popup -->
+<!--
+<div class="shadow"></div>
+<div class="alert">
+	<img src="img/alert.png">
+	<h2>Connection lost</h2>
+	
+	<div class="alert-content">
+		<img src="/qr/192.168.0.105:8080/xblg8">
+		<p>
+			Scan this QR code to reconnect<br>
+			or open <em>lemaze.io/zlknd</em> in your phone
+		</p>
+		<a href="connect" class="btn btn-small">Return to main page</a>
+	</div>
+</div>
+-->
