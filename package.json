@@ -2,7 +2,7 @@
   "name": "webgamepad",
   "version": "0.0.1",
   "description": "Test app for connecting desktop with smartphone which acts as wireless gamepad.",
-  "main": "app.js",
+  "main": "server.js",
   "dependencies": {
     "debug": "^2.2.0",
     "ejs": "^2.5.1",
